@@ -6,13 +6,15 @@ const temps = document.querySelector('.temps');
 const temperature = document.querySelector('.temperature');
 const localisation = document.querySelector('.localisation');
 // les heure de la journé
-const heure = document.querySelector('.heure-nom-prevition');
+const heure = document.querySelectorAll('.heure-nom-prevition');
 const tempPourH = document.querySelectorAll('.heure-prevition-valeur');
+// jour div 
+const jourDiv = document.querySelectorAll('.jour-prevition-nom');
 
 if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
 
-        // console.log(position)
+        // console.log(position);
         let long = position.coords.longitude;
         let lat = position.coords.latitude;
         AppelAPI(long, lat);
@@ -31,7 +33,7 @@ function AppelAPI(long, lat) {
         return reponse.json();
     })
     .then((data) => {
-        console.log(data);
+        // console.log(data); 
 
         resultaAPI = data;
 
@@ -48,9 +50,28 @@ function AppelAPI(long, lat) {
 
             let heureIncr = heureActuelle + i * 3;
 
-            heure[i].innerText = `${heureIncr} h`;
-
+            if(heureIncr > 24) {
+                heure[i].innerText = `${heureIncr - 24} h`;
+            }else if(heureIncr === 24) {
+                heure[i].innerText = "00 h"
+            }else {
+                heure[i].innerText = `${heureIncr} h`;
+            }
         }    
+
+        // temps pour 3H
+        
+        for(let j = 0; j < tempPourH.length; j++) {
+            tempPourH[j].innerText = `${Math.trunc(resultaAPI.hourly[j * 3].temp)}°`
+        }
+
+
+        // trois premieres lettres des jours 
+
+        for(let k = 0; k < tabJoursEnOrdre.length; k++){
+            jourDiv[k].innerText = tabJoursEnOrdre[k].slice(0, 3);
+        }
+
     })
 
 
