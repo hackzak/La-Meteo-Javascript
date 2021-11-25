@@ -1,3 +1,5 @@
+import tabJoursEnOrdre from "./Utilitaire/gestionTemps.js";
+
 
 const CLEFAPI = '82490455be39441291d54c2212f6a331'
 let resultaAPI
@@ -10,6 +12,8 @@ const heure = document.querySelectorAll('.heure-nom-prevition');
 const tempPourH = document.querySelectorAll('.heure-prevition-valeur');
 // jour div 
 const jourDiv = document.querySelectorAll('.jour-prevition-nom');
+// jour par jour
+const tempJoursDiv = document.querySelectorAll('.jour-prevition-temp')
 
 if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -70,6 +74,13 @@ function AppelAPI(long, lat) {
 
         for(let k = 0; k < tabJoursEnOrdre.length; k++){
             jourDiv[k].innerText = tabJoursEnOrdre[k].slice(0, 3);
+        }
+
+
+        // Temp par jours 
+
+        for(let m = 0; m < 7; m++) {
+            tempJoursDiv[m].innerText = `${Math.trunc(resultaAPI[m + 1].temp.day)}°`
         }
 
     })
