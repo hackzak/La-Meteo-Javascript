@@ -5,6 +5,9 @@ let resultaAPI
 const temps = document.querySelector('.temps');
 const temperature = document.querySelector('.temperature');
 const localisation = document.querySelector('.localisation');
+// les heure de la journé
+const heure = document.querySelector('.heure-nom-prevition');
+const tempPourH = document.querySelectorAll('.heure-prevition-valeur');
 
 if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -37,6 +40,18 @@ function AppelAPI(long, lat) {
         localisation.innerText = resultaAPI.timezone;
 
 
+        // les heures, par tranche de trois, avec leur temperature.
+        
+        let heureActuelle = new Date().getHours();
+
+        for(let i = 0; i < heure.length; i++) {
+
+            let heureIncr = heureActuelle + i * 3;
+
+            heure[i].innerText = `${heureIncr} h`;
+
+        }    
     })
+
 
 }
