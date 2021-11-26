@@ -1,4 +1,4 @@
-const joursSemaine = ['Lindi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 
+const joursSemaine = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 
 'Dimenche']
 
 

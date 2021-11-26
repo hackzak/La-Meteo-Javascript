@@ -11,9 +11,11 @@ const localisation = document.querySelector('.localisation');
 const heure = document.querySelectorAll('.heure-nom-prevition');
 const tempPourH = document.querySelectorAll('.heure-prevition-valeur');
 // jour div 
-const jourDiv = document.querySelectorAll('.jour-prevition-nom');
+const joursDiv = document.querySelectorAll('.jour-prevition-nom');
 // jour par jour
-const tempJoursDiv = document.querySelectorAll('.jour-prevition-temp')
+const tempJoursDiv = document.querySelectorAll('.jour-prevition-temps');
+// icon de temp 
+const imgIcon = document.querySelectorAll('.logo-meteo');
 
 if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -73,14 +75,14 @@ function AppelAPI(long, lat) {
         // trois premieres lettres des jours 
 
         for(let k = 0; k < tabJoursEnOrdre.length; k++){
-            jourDiv[k].innerText = tabJoursEnOrdre[k].slice(0, 3);
+            joursDiv[k].innerText = tabJoursEnOrdre[k].slice(0, 3);
         }
 
 
         // Temp par jours 
 
         for(let m = 0; m < 7; m++) {
-            tempJoursDiv[m].innerText = `${Math.trunc(resultaAPI[m + 1].temp.day)}°`
+            tempJoursDiv[m].innerText = `${Math.trunc(resultaAPI.daily[m + 1].temp.day)}°`
         }
 
     })
