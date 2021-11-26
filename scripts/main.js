@@ -1,4 +1,4 @@
-import tabJoursEnOrdre from "./Utilitaire/gestionTemps.js";
+import tabJoursEnOrdre from './Utilitaire/gestionTemps.js';
 
 
 const CLEFAPI = '82490455be39441291d54c2212f6a331'
@@ -83,6 +83,14 @@ function AppelAPI(long, lat) {
 
         for(let m = 0; m < 7; m++) {
             tempJoursDiv[m].innerText = `${Math.trunc(resultaAPI.daily[m + 1].temp.day)}°`
+        }
+
+        // Icone dynamique
+
+        if(heureActuelle >= 6 && heureActuelle < 21) {
+            imgIcon.src = `ressources/jour/${resultaAPI.current.weather[0].icon}.svg`
+        }else {
+            imgIcon.src = `ressources//${resultaAPI.current.weather[0].icon}.svg`
         }
 
     })
