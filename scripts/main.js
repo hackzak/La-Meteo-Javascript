@@ -16,6 +16,8 @@ const joursDiv = document.querySelectorAll('.jour-prevition-nom');
 const tempJoursDiv = document.querySelectorAll('.jour-prevition-temps');
 // icon de temp 
 const imgIcon = document.querySelector('.logo-meteo');
+// chargement 
+const chargementContainer = document.querySelector('.overlay-icon-chargement');
 
 if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -94,6 +96,9 @@ function AppelAPI(long, lat) {
         } else {
             imgIcon.src = `ressources/nuit/${resultaAPI.current.weather[0].icon}.svg`
         }
+
+
+        chargementContainer.classList.add('disparition');
 
 
     })
