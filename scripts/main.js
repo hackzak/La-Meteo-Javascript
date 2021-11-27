@@ -28,7 +28,9 @@ if(navigator.geolocation) {
     }, () => {
         alert(`vous avez refuser la geolocalisation , l'aplication ne peur pas 
         fonctionner, dveuillez l'activer.`)
+
     })
+
 }
 
 function AppelAPI(long, lat) {
@@ -92,6 +94,7 @@ function AppelAPI(long, lat) {
         }else {
             imgIcon.src = `ressources//${resultaAPI.current.weather[0].icon}.svg`
         }
+
 
     })
 
