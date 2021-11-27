@@ -15,7 +15,7 @@ const joursDiv = document.querySelectorAll('.jour-prevition-nom');
 // jour par jour
 const tempJoursDiv = document.querySelectorAll('.jour-prevition-temps');
 // icon de temp 
-const imgIcon = document.querySelectorAll('.logo-meteo');
+const imgIcon = document.querySelector('.logo-meteo');
 
 if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -91,8 +91,8 @@ function AppelAPI(long, lat) {
 
         if(heureActuelle >= 6 && heureActuelle < 21) {
             imgIcon.src = `ressources/jour/${resultaAPI.current.weather[0].icon}.svg`
-        }else {
-            imgIcon.src = `ressources//${resultaAPI.current.weather[0].icon}.svg`
+        } else {
+            imgIcon.src = `ressources/nuit/${resultaAPI.current.weather[0].icon}.svg`
         }
 
 
