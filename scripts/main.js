@@ -1,7 +1,7 @@
 import tabJoursEnOrdre from './Utilitaire/gestionTemps.js';
 
 
-const CLEFAPI = '82490455be39441291d54c2212f6a331'
+const CLEFAPI = '20f3f8ae0fb808b6ba718b44262aea88'
 let resultaAPI
 
 const temps = document.querySelector('.temps');
@@ -15,7 +15,7 @@ const joursDiv = document.querySelectorAll('.jour-prevition-nom');
 // jour par jour
 const tempJoursDiv = document.querySelectorAll('.jour-prevition-temps');
 // icon de temp 
-const imgIcon = document.querySelector('.logo-meteo');
+const imgIcon = document.querySelector('.logo-temp');
 // chargement 
 const chargementContainer = document.querySelector('.overlay-icon-chargement');
 
@@ -29,7 +29,7 @@ if(navigator.geolocation) {
 
     }, () => {
         alert(`vous avez refuser la geolocalisation , l'aplication ne peur pas 
-        fonctionner, dveuillez l'activer.`)
+        fonctionner, veuillez l'activer.`)
 
     })
 
@@ -96,6 +96,7 @@ function AppelAPI(long, lat) {
         } else {
             imgIcon.src = `ressources/nuit/${resultaAPI.current.weather[0].icon}.svg`
         }
+
 
 
         chargementContainer.classList.add('disparition');
